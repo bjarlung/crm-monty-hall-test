@@ -1,4 +1,5 @@
 import React from "react";
+import './MontyGame.css'
 import getSimulation from "./getSimulation";
 
 function MontyGame() {
@@ -26,30 +27,24 @@ function MontyGame() {
     
     return (
         <>
-        <form onSubmit={handleSubmit}>
-            <br/>
-            <label>Number of runs: 
-                <input name="numberOfTimes" type="number" defaultValue="100" onChange={handleChange}/>
-            </label>
-            <br/>
-            <br/>
+        <form onSubmit={handleSubmit} className="monty-form">
+            <div>
+                <label className="monty-label">Number of runs: 
+                    <input className="user-input" name="numberOfTimes" type="number" defaultValue="100" max="99999" min="1" onChange={handleChange}/>
+                </label>
 
-            <label>Switch: 
-                <select name="doSwitch" id="switcher" onChange={handleChange}>
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
-                </select>
-            </label>
-            <br/>
-            <br/>
-
-            <input type="submit" value="Run Monty Hall simulation"/> 
+                <label className="monty-label">Switch: 
+                    <select  className="user-input" name="doSwitch" id="switcher" onChange={handleChange}>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </label>
+            </div>
+            <button className="simulation-button" type="submit">Run simulation</button>
         </form>
-        <br/>
         {state.result && 
-            <label>Result: {state.result}</label>
-        }
-        
+            <label className="result">Number of wins: {state.result}</label>
+        } 
         </>
     );
 

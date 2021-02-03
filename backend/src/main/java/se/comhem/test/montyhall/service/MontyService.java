@@ -1,37 +1,30 @@
 package se.comhem.test.montyhall.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import se.comhem.test.montyhall.domain.MontyGame;
 
-import java.util.Random;
 import java.util.stream.IntStream;
 
 @Service
 public class MontyService {
 
+    @Autowired
+    MontyGame montyGame;
+
+    public MontyService() {}
+
+    public MontyService(MontyGame montyGame) {
+        this.montyGame = montyGame;
+    }
+
     public int getMonty(int number, boolean doSwitch) {
+        System.out.println(montyGame);
 
-        int hits;
-        if(doSwitch) {
-            hits = getMontyWithSwitch(number);
-        } else {
-            hits = getMontyNoSwitch(number);
-        }
-        return hits;
+        int wins = (int) IntStream.range(0, number).filter(i -> montyGame.play(doSwitch)).count();
+        System.out.println("Returning wins: " + wins);
+        return wins;
 
-    }
-
-    private int getMontyNoSwitch(int number) {
-        return (int) IntStream.range(0, number).filter(i -> getRandomDoor() == getRandomDoor()).count();
-    }
-
-    private int getMontyWithSwitch(int number) {
-        return (int) IntStream.range(0, number).filter(i -> getRandomDoor() != getRandomDoor()).count();
-    }
-
-
-    public int getRandomDoor() {
-        Random random = new Random();
-        return random.nextInt(3);
     }
 
 }
