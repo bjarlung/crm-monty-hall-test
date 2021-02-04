@@ -13,8 +13,8 @@ public class MontyController {
     public MontyService montyService;
 
     @GetMapping("/monty/{numberOfGames}/{doSwitch}")
-    public int getMontyHall(@PathVariable int numberOfGames, @PathVariable boolean doSwitch) {
-        return montyService.getMonty(numberOfGames, doSwitch);
+    public int getMontyHallWins(@PathVariable int numberOfGames, @PathVariable boolean doSwitch) {
+        return montyService.getWins(numberOfGames, doSwitch);
     }
 
 }

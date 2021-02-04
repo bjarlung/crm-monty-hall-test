@@ -1,21 +1,24 @@
 package se.comhem.test.montyhall;
 
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.junit.Assert;
 import se.comhem.test.montyhall.domain.MontyGame;
 
 import static org.mockito.Mockito.*;
+import static org.mockito.MockitoAnnotations.initMocks;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+
 public class MontyGameTest {
 
     @Mock
     MontyGame montyGameMock;
+
+    @Before
+    public void setup()  {
+        initMocks(this);
+    }
 
     @Test
     public void testPlayNoSwitch() {

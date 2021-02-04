@@ -18,7 +18,6 @@ function MontyGame() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(state)
         getSimulation(state.formData.numberOfTimes, state.formData.doSwitch)
             .then(res => {
                 updateState({...state, result: res});
@@ -32,7 +31,6 @@ function MontyGame() {
                 <label className="monty-label">Number of runs: 
                     <input className="user-input" name="numberOfTimes" type="number" defaultValue="100" max="99999" min="1" onChange={handleChange}/>
                 </label>
-
                 <label className="monty-label">Switch: 
                     <select  className="user-input" name="doSwitch" id="switcher" onChange={handleChange}>
                         <option value="true">Yes</option>
@@ -47,8 +45,6 @@ function MontyGame() {
         } 
         </>
     );
-
-
 };
 
 export default MontyGame;

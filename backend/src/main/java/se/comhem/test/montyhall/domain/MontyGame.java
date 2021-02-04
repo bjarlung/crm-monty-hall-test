@@ -18,7 +18,7 @@ public class MontyGame {
     }
 
     public boolean play(boolean doSwitch) {
-        return (doSwitch) ? playWithSwitch() : playNoSwitch();
+        return doSwitch ? playWithSwitch() : playNoSwitch();
     }
 
     public boolean playNoSwitch() {
